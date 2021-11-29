@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import FlipMove from 'react-flip-move'
 import TweetBox from './TweetBox'
 import Post from './Post'
 import './Feed.css'
@@ -21,19 +22,20 @@ const Feed = () => {
                     <h2>Home</h2>
                 </div>
 
-            {/*TweetBox*/}
             <TweetBox />    
-
-            {posts.map(post => (
-                <Post 
-                    displayName={post.displayName} 
-                    username={post.username} 
-                    verified={post.true} 
-                    text={post.text} 
-                    image={post.image}
-                    avatar={post.avatar}
-                />
-            ))}
+            <FlipMove>
+                {posts.map(post => (
+                    <Post 
+                        key={post.text}
+                        displayName={post.displayName} 
+                        username={post.username} 
+                        verified={post.true} 
+                        text={post.text} 
+                        image={post.image}
+                        avatar={post.avatar}
+                    />
+                ))}
+            </FlipMove>
         </div>
     )
 }
